@@ -1,18 +1,22 @@
 Summary:	A library of functions for manipulating MNG format files
+Summary(pl):	Biblioteka do obróbki plików w formacie MNG
 Name:		libmng
 Version:	1.0.3
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	âÉÂÌÉÏÔÅËÉ
+Group(uk):	â¦ÂÌ¦ÏÔÅËÉ
 Source0:	http://prdownloads.sourceforge.net/libmng/%{name}-%{version}.tar.gz
 Patch0:		%{name}-automake.patch
 URL:		http://www.libmng.com/
-BuildRequires:	automake
 BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
@@ -23,35 +27,57 @@ libmng - library for reading, writing, displaying and examing
 Multiple-Image Network Graphics. MNG is the animation extension to the
 popular PNG image-format.
 
+%description -l pl
+libmng - biblioteka do czytania, zapisywania, wy¶wietlania i
+pobierania informacji z plików MNG (Multiple-Image Network Graphics).
+MNG to rozszerzenie o animacje popularnego formatu obrazków PNG.
+
 %package devel
 Summary:	Development tools for programs to manipulate MNG format files
+Summary(pl):	Pakiet do tworzenia programów obrabiaj±cych pliki MNG
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
+Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name} = %{version}
 Requires:	libjpeg-devel
 Requires:	zlib-devel
 
 %description devel
-The libmng-devel package contains the header files and static
-libraries necessary for developing programs using the MNG
-(Multiple-Image Network Graphics) library.
+The libmng-devel package contains the header files necessary for
+developing programs using the MNG (Multiple-Image Network Graphics)
+library.
 
 If you want to develop programs which will manipulate MNG image format
 files, you should install libmng-devel. You'll also need to install
 the libmng package.
 
+%description devel -l pl
+Ten pakiet zawiera pliki nag³ówkowe potrzebne do tworzenia programów
+u¿ywaj±cych biblioteki libmng do obróbki plików MNG.
+
 %package static
 Summary:	Static MNG libraries
+Summary(pl):	Biblioteki statyczne MNG
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
+Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name}-devel = %{version}
 
 %description static
 Static MNG libraries.
+
+%description static -l pl
+Biblioteki statyczne MNG.
 
 %prep
 %setup -q
@@ -77,11 +103,11 @@ rm -rf $RPM_BUILD_ROOT
 
 gzip -9nf Changes README* doc/{doc.readme,libmng.txt}
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
