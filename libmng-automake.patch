@@ -1,6 +1,6 @@
-diff -Nru libmng-0.9.2/Makefile.am libmng-0.9.2.new/Makefile.am
---- libmng-0.9.2/Makefile.am	Mon Aug  7 01:36:03 2000
-+++ libmng-0.9.2.new/Makefile.am	Tue Aug  8 08:12:13 2000
+diff -Nru libmng-1.0.5.orig/Makefile.am libmng-1.0.5/Makefile.am
+--- libmng-1.0.5.orig/Makefile.am	Sat Mar  1 17:09:16 2003
++++ libmng-1.0.5/Makefile.am	Tue Mar  4 09:26:00 2003
 @@ -2,8 +2,10 @@
  
  AUTOMAKE_OPTIONS = 1.3 foreign no-dependencies
@@ -8,31 +8,31 @@ diff -Nru libmng-0.9.2/Makefile.am libmng-0.9.2.new/Makefile.am
 +SUBDIRS = doc
 +
  # include the app subdirectories in the distribution
--EXTRA_DIST = makefiles doc contrib Unix
-+EXTRA_DIST = makefiles contrib Unix
+-EXTRA_DIST = makefiles doc contrib
++EXTRA_DIST = makefiles contrib
  
  
  # libmng release @VERSION@
-diff -Nru libmng-0.9.2/configure.in libmng-0.9.2.new/configure.in
---- libmng-0.9.2/configure.in	Mon Aug  7 01:36:03 2000
-+++ libmng-0.9.2.new/configure.in	Tue Aug  8 10:13:23 2000
-@@ -100,4 +100,4 @@
-     test $_restore -eq 1 && CPPFLAGS=$_cppflags LDFLAGS=$_ldflags
-     AC_MSG_WARN(jpeg header not found))])
+diff -Nru libmng-1.0.5.orig/configure.in libmng-1.0.5/configure.in
+--- libmng-1.0.5.orig/configure.in	Sat Mar  1 17:09:15 2003
++++ libmng-1.0.5/configure.in	Tue Mar  4 09:25:11 2003
+@@ -187,4 +187,4 @@
+ 
+   test $_restore -eq 1 && CPPFLAGS=$_cppflags LDFLAGS=$_ldflags
  
 -AC_OUTPUT(Makefile)
 +AC_OUTPUT(Makefile doc/Makefile doc/man/Makefile)
-diff -Nru libmng-0.9.2/doc/Makefile.am libmng-0.9.2.new/doc/Makefile.am
---- libmng-0.9.2/doc/Makefile.am	Thu Jan  1 01:00:00 1970
-+++ libmng-0.9.2.new/doc/Makefile.am	Tue Aug  8 08:12:37 2000
+diff -Nru libmng-1.0.5.orig/doc/Makefile.am libmng-1.0.5/doc/Makefile.am
+--- libmng-1.0.5.orig/doc/Makefile.am	Thu Jan  1 01:00:00 1970
++++ libmng-1.0.5/doc/Makefile.am	Tue Mar  4 09:25:11 2003
 @@ -0,0 +1,4 @@
 +## Process this file with automake to produce Makefile.in
 +
 +SUBDIRS = man
 +
-diff -Nru libmng-0.9.2/doc/man/Makefile.am libmng-0.9.2.new/doc/man/Makefile.am
---- libmng-0.9.2/doc/man/Makefile.am	Thu Jan  1 01:00:00 1970
-+++ libmng-0.9.2.new/doc/man/Makefile.am	Tue Aug  8 08:14:49 2000
+diff -Nru libmng-1.0.5.orig/doc/man/Makefile.am libmng-1.0.5/doc/man/Makefile.am
+--- libmng-1.0.5.orig/doc/man/Makefile.am	Thu Jan  1 01:00:00 1970
++++ libmng-1.0.5/doc/man/Makefile.am	Tue Mar  4 09:25:11 2003
 @@ -0,0 +1,3 @@
 +## Process this file with automake to produce Makefile.in
 +
