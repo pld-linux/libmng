@@ -3,12 +3,12 @@ Summary(pl):	Biblioteka do obrСbki plikСw w formacie MNG
 Summary(uk):	Б╕бл╕отека функц╕й для роботи з файлами у формат╕ MNG
 Summary(ru):	Библиотека функций для работы с файлами в формате MNG
 Name:		libmng
-Version:	1.0.5
+Version:	1.0.6
 Release:	1
 License:	BSD-like
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libmng/%{name}-%{version}.tar.gz
-# Source0-md5: e4f8f11231f01aa540a9b99251ab8bb6
+# Source0-md5:	af6768923295f486fe982ae53491b826
 Patch0:		%{name}-automake.patch
 URL:		http://www.libmng.com/
 BuildRequires:	autoconf >= 2.50
@@ -100,6 +100,9 @@ Biblioteki statyczne MNG.
 %patch0 -p1
 
 %build
+cp makefiles/{Makefile.am,configure.in} .
+cp doc/makefiles/Makefile.am doc
+cp doc/man/makefiles/Makefile.am doc/man
 rm -f acinclude.m4 missing
 %{__libtoolize}
 %{__aclocal}
