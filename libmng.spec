@@ -3,7 +3,7 @@ Summary(pl):	Biblioteka do obrСbki plikСw w formacie MNG
 Summary(uk):	Б╕бл╕отека функц╕й для роботи з файлами у формат╕ MNG
 Summary(ru):	Библиотека функций для работы с файлами в формате MNG
 Name:		libmng
-Version:	1.0.4
+Version:	1.0.5
 Release:	1
 License:	BSD-like
 Group:		Libraries
