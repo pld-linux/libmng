@@ -16,7 +16,7 @@ Source0:	http://dl.sourceforge.net/libmng/%{name}-%{version}.tar.gz
 Patch0:		%{name}-automake.patch
 URL:		http://www.libmng.com/
 BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
+BuildRequires:	automake >= 1.3
 BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
