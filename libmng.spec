@@ -14,6 +14,7 @@ Group:		Libraries
 Source0:	http://dl.sourceforge.net/libmng/%{name}-%{version}.tar.gz
 # Source0-md5:	ff1205ef70855a75c098ea09690413c6
 Patch0:		%{name}-automake.patch
+Patch1:		%{name}-gcc4.patch
 URL:		http://www.libmng.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.3
@@ -157,6 +158,7 @@ mngplay - przegl±darka plików MNG oparta na SDL.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 cp makefiles/{Makefile.am,configure.in} .
