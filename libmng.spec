@@ -5,13 +5,6 @@ Version:	1.0.3
 Release:	3
 License:	BSD-like
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Source0:	http://prdownloads.sourceforge.net/libmng/%{name}-%{version}.tar.gz
 Patch0:		%{name}-automake.patch
 URL:		http://www.libmng.com/
@@ -37,13 +30,6 @@ MNG to rozszerzenie o animacje popularnego formatu obrazkСw PNG.
 Summary:	Development tools for programs to manipulate MNG format files
 Summary(pl):	Pakiet do tworzenia programСw obrabiaj╠cych pliki MNG
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Requires:	libjpeg-devel
 Requires:	zlib-devel
@@ -66,13 +52,6 @@ u©ywaj╠cych biblioteki libmng do obrСbki plikСw MNG.
 Summary:	Static MNG libraries
 Summary(pl):	Biblioteki statyczne MNG
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
