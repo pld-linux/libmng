@@ -8,6 +8,7 @@ Release:	1
 License:	BSD-like
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libmng/%{name}-%{version}.tar.gz
+# Source0-md5: e4f8f11231f01aa540a9b99251ab8bb6
 Patch0:		%{name}-automake.patch
 URL:		http://www.libmng.com/
 BuildRequires:	autoconf >= 2.50
