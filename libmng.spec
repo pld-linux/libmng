@@ -1,13 +1,14 @@
 Summary:	A library of functions for manipulating MNG format files
 Name:		libmng
 Version:	0.9.2
-Release:	1
+Release:	2
 License:	AS IS
 Group:		Libraries
-Group(pl):	Biblioteki
+Group(de):	Libraries
 Group(fr):	Librairies
+Group(pl):	Biblioteki
 Source0:	ftp://download.sourceforge.net/pub/sourceforge/libmng/%{name}-%{version}.tar.gz
-Patch0:		libmng-automake.patch
+Patch0:		%{name}-automake.patch
 URL:		http://www.libmng.com/
 BuildPrereq:	automake
 BuildPrereq:	autoconf
@@ -22,8 +23,9 @@ popular PNG image-format.
 %package devel
 Summary:	Development tools for programs to manipulate MNG format files
 Group:		Development/Libraries
-Group(pl):	Programowanie/Biblioteki
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description devel
@@ -38,8 +40,9 @@ the libmng package.
 %package static
 Summary:	Static MNG libraries
 Group:		Development/Libraries
-Group(pl):	Programowanie/Biblioteki
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
 %description static
@@ -53,7 +56,6 @@ Static MNG libraries.
 aclocal
 automake
 autoconf
-LDFLAGS="-s"; export LDFLAGS
 %configure
 %{__make}
 
@@ -62,10 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
-
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man*/* \
-	CHANGES README* doc/{doc.readme,libmng.txt}
+gzip -9nf CHANGES README* doc/{doc.readme,libmng.txt}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
