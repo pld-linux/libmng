@@ -101,7 +101,7 @@ Biblioteki statyczne MNG.
 %build
 rm -f acinclude.m4 missing
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure \
