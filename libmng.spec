@@ -1,3 +1,4 @@
+# TODO: package contrib things
 Summary:	A library of functions for manipulating MNG format files
 Summary(pl):	Biblioteka do obrСbki plikСw w formacie MNG
 Summary(uk):	Б╕бл╕отека функц╕й для роботи з файлами у формат╕ MNG
@@ -103,7 +104,6 @@ Biblioteki statyczne MNG.
 cp makefiles/{Makefile.am,configure.in} .
 cp doc/makefiles/Makefile.am doc
 cp doc/man/makefiles/Makefile.am doc/man
-rm -f acinclude.m4 missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -118,7 +118,8 @@ rm -f acinclude.m4 missing
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -128,15 +129,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc Changes LICENSE README 
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_mandir}/man5/*
 
 %files devel
 %defattr(644,root,root,755)
-%doc Changes README* doc/{doc.readme,libmng.txt}
-%{_includedir}/*
+%doc doc/{doc.readme,libmng.txt,Plan*.png}
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
+%{_includedir}/*
 %{_mandir}/man3/*
 
 %files static
