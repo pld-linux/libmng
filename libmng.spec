@@ -10,9 +10,10 @@ Group(pl):	Biblioteki
 Source0:	ftp://download.sourceforge.net/pub/sourceforge/libmng/%{name}-%{version}.tar.gz
 Patch0:		%{name}-automake.patch
 URL:		http://www.libmng.com/
-BuildPrereq:	automake
-BuildPrereq:	autoconf
-BuildPrereq:	zlib-devel
+BuildRequires:	automake
+BuildRequires:	autoconf
+BuildRequires:	libtool
+BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -55,6 +56,7 @@ Static MNG libraries.
 %patch -p1
 
 %build
+libtoolize --copy --force
 aclocal
 autoconf
 automake -a -c
