@@ -7,14 +7,13 @@ Summary(pl):	Biblioteka do obróbki plików w formacie MNG
 Summary(uk):	â¦ÂÌ¦ÏÔÅËÁ ÆÕÎËÃ¦Ê ÄÌÑ ÒÏÂÏÔÉ Ú ÆÁÊÌÁÍÉ Õ ÆÏÒÍÁÔ¦ MNG
 Summary(ru):	âÉÂÌÉÏÔÅËÁ ÆÕÎËÃÉÊ ÄÌÑ ÒÁÂÏÔÙ Ó ÆÁÊÌÁÍÉ × ÆÏÒÍÁÔÅ MNG
 Name:		libmng
-Version:	1.0.7
-Release:	2
+Version:	1.0.8
+Release:	1
 License:	BSD-like
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libmng/%{name}-%{version}.tar.gz
-# Source0-md5:	863002cf13a60ccfd8be641b62e3cc58
+# Source0-md5:	d688ca879c934e9cde8b323cf3025f89
 Patch0:		%{name}-automake.patch
-Patch1:		%{name}-gtk2.patch
 URL:		http://www.libmng.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -157,7 +156,6 @@ mngplay - przegl±darka plików MNG oparta na SDL.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 cp makefiles/{Makefile.am,configure.in} .
