@@ -132,7 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc Changes README* doc/{doc.readme,libmng.txt}
 %{_includedir}/*
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.la
+%{_libdir}/lib*.la
 %{_mandir}/man3/*
 
 %files static
