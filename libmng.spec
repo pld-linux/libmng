@@ -46,6 +46,7 @@ Summary(ru):	Средства разработки для программ, работающих с файлами в формате MN
 Summary(uk):	Засоби розробки для роботи з програмами, що працюють з файлами у формат╕ MNG
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	lcms-devel
 Requires:	libjpeg-devel
 Requires:	zlib-devel
 Obsoletes:	libmng0-devel
