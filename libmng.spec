@@ -64,7 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf CHANGES README* doc/{doc.readme,libmng.txt}
+gzip -9nf Changes README* doc/{doc.readme,libmng.txt}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
