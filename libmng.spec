@@ -27,6 +27,8 @@ Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
+Requires:	libjpeg-devel
+Requires:	zlib-devel
 
 %description devel
 The libmng-devel package contains the header files and static
