@@ -1,16 +1,16 @@
-# TODO: package contrib things
 Summary:	A library of functions for manipulating MNG format files
 Summary(pl):	Biblioteka do obrСbki plikСw w formacie MNG
 Summary(uk):	Б╕бл╕отека функц╕й для роботи з файлами у формат╕ MNG
 Summary(ru):	Библиотека функций для работы с файлами в формате MNG
 Name:		libmng
-Version:	1.0.6
-Release:	2
+Version:	1.0.7
+Release:	1
 License:	BSD-like
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libmng/%{name}-%{version}.tar.gz
-# Source0-md5:	af6768923295f486fe982ae53491b826
+# Source0-md5:	863002cf13a60ccfd8be641b62e3cc58
 Patch0:		%{name}-automake.patch
+Patch1:		%{name}-gtk2.patch
 URL:		http://www.libmng.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -18,6 +18,10 @@ BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
+# for contribs
+BuildRequires:	SDL-devel
+BuildRequires:	gtk+2-devel >= 2.0.0
+BuildRequires:	motif-devel >= 2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libmng1
 
@@ -47,7 +51,7 @@ Summary(pl):	Pakiet do tworzenia programСw obrabiaj╠cych pliki MNG
 Summary(ru):	Средства разработки для программ, работающих с файлами в формате MNG
 Summary(uk):	Засоби розробки для роботи з програмами, що працюють з файлами у формат╕ MNG
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	lcms-devel
 Requires:	libjpeg-devel
 Requires:	zlib-devel
@@ -82,7 +86,7 @@ Summary(pl):	Biblioteki statyczne MNG
 Summary(ru):	Статическая библиотека для работы с файлами в формате MNG
 Summary(uk):	Статична б╕бл╕отека для роботи з файлами у формат╕ MNG
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static MNG libraries.
@@ -96,9 +100,60 @@ Biblioteki statyczne MNG.
 %description static -l uk
 Статична б╕бл╕отека для роботи з файлами у формат╕ MNG.
 
+%package progs
+Summary:	libmng utilities (fbmngplay, mngtree)
+Summary(pl):	NarzЙdzia do libmng (fbmngplay, mngtree)
+Group:		Applications/Graphics
+Requires:	%{name} = %{version}-%{release}
+
+%description progs
+libmng utilities that don't depend on additional libraries (fbmngplay,
+mngtree).
+
+%description progs -l pl
+NarzЙdzia do libmng nie wymagaj╠ce dodatkowych bibliotek (fbmngplay,
+mngtree).
+
+%package progs-gtk
+Summary:	gmngview - GTK+-based MNG viewer
+Summary(pl):	gmngview - przegl╠darka plikСw MNG oparta na GTK+
+Group:		X11/Applications/Graphics
+Requires:	%{name} = %{version}-%{release}
+
+%description progs-gtk
+gmngview - GTK+-based MNG viewer.
+
+%description progs-gtk -l pl
+gmngview - przegl╠darka plikСw MNG oparta na GTK+.
+
+%package progs-motif
+Summary:	xmngplay - X11/Motif-based MNG viewer
+Summary(pl):	xmngplay - przegl╠darka plikСw MNG oparta na bibliotekach X11/Motif
+Group:		X11/Applications/Graphics
+Requires:	%{name} = %{version}-%{release}
+
+%description progs-motif
+xmngplay - X11/Motif-based MNG viewer.
+
+%description progs-motif -l pl
+xmngplay - przegl╠darka plikСw MNG oparta na bibliotekach X11/Motif.
+
+%package progs-sdl
+Summary:	mngplay - SDL-based MNG viewer
+Summary(pl):	mngplay - przegl╠darka plikСw MNG oparta na SDL
+Group:		Applications/Graphics
+Requires:	%{name} = %{version}-%{release}
+
+%description progs-sdl
+mngplay - SDL-based MNG viewer.
+
+%description progs-sdl -l pl
+mngplay - przegl╠darka plikСw MNG oparta na SDL.
+
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 cp makefiles/{Makefile.am,configure.in} .
@@ -115,11 +170,39 @@ cp doc/man/makefiles/Makefile.am doc/man
 	--with-jpeg
 %{__make}
 
+%{__make} -C contrib/gcc/fbmngplay fbmngplay \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} -Wall -D_REENTRANT -I../../.." \
+	LDFLAGS="%{rpmldflags} -L../../../.libs"
+
+%{__make} -C contrib/gcc/gtk-mng-view gmngview \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} -Wall -I../../.. `pkg-config --cflags gdk-pixbuf-2.0 gtk+-2.0`" \
+	LIBS="%{rpmldflags} -L../../../.libs -lmng `pkg-config --libs gdk-pixbuf-2.0 gtk+-2.0`"
+
+%{__make} -C contrib/gcc/mngtree -f makefile.linux \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} -Wall -DMNG_USE_SO -I../../.." \
+	LDFLAGS="%{rpmldflags} -L../../../.libs -lmng"
+
+%{__cc} -o contrib/gcc/sdl-mngplay/mngplay contrib/gcc/sdl-mngplay/mngplay.c \
+	%{rpmldflags} %{rpmcflags} -I. \
+	 -L.libs -lmng `sdl-config --libs`
+
+%{__make} -C contrib/gcc/xmngview compile \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} -Wall -I../../.. -I/usr/X11R6/include" \
+	LIBS="-L../../../.libs -lmng -L/usr/X11R6/%{_lib} -lXm -lXt -lX11"
+
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_bindir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install contrib/gcc/*/{fbmngplay,gmngview,mngtree,mngplay,xmngview} \
+	$RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -129,7 +212,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changes LICENSE README 
+%doc CHANGES LICENSE README 
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_mandir}/man5/*
 
@@ -144,3 +227,20 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libmng.a
+
+%files progs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/fbmngplay
+%attr(755,root,root) %{_bindir}/mngtree
+
+%files progs-gtk
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/gmngview
+
+%files progs-motif
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/xmngview
+
+%files progs-sdl
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/mngplay
