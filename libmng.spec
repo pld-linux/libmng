@@ -4,10 +4,11 @@ Summary(uk):	Б╕бл╕отека функц╕й для роботи з файлами у формат╕ MNG
 Summary(ru):	Библиотека функций для работы с файлами в формате MNG
 Name:		libmng
 Version:	1.0.4
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Libraries
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/libmng/%{name}-%{version}.tar.gz
+# Source0-md5:	46b909bc824b6136805021aaa6bb8360
 Patch0:		%{name}-automake.patch
 URL:		http://www.libmng.com/
 BuildRequires:	autoconf >= 2.50
