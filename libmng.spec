@@ -69,7 +69,7 @@ rm -f acinclude.m4 missing
 libtoolize --copy --force
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f
 %configure \
 	--enable-shared \
 	--enable-static \
