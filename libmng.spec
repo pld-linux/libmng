@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	sdl	# don't build SDL-based contribs
+#
 Summary:	A library of functions for manipulating MNG format files
 Summary(pl):	Biblioteka do obróbki plików w formacie MNG
 Summary(uk):	â¦ÂÌ¦ÏÔÅËÁ ÆÕÎËÃ¦Ê ÄÌÑ ÒÏÂÏÔÉ Ú ÆÁÊÌÁÍÉ Õ ÆÏÒÍÁÔ¦ MNG
@@ -19,11 +23,11 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
 # for contribs
-BuildRequires:	SDL-devel
+%{?with_sdl:BuildRequires:	SDL-devel}
 BuildRequires:	gtk+2-devel >= 2.0.0
 BuildRequires:	motif-devel >= 2.0
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libmng1
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 libmng - library for reading, writing, displaying and examing
@@ -185,9 +189,11 @@ cp doc/man/makefiles/Makefile.am doc/man
 	CFLAGS="%{rpmcflags} -Wall -DMNG_USE_SO -I../../.." \
 	LDFLAGS="%{rpmldflags} -L../../../.libs -lmng"
 
+%if %{with sdl}
 %{__cc} -o contrib/gcc/sdl-mngplay/mngplay contrib/gcc/sdl-mngplay/mngplay.c \
 	%{rpmldflags} %{rpmcflags} -I. \
 	 -L.libs -lmng `sdl-config --libs`
+%endif
 
 %{__make} -C contrib/gcc/xmngview compile \
 	CC="%{__cc}" \
@@ -201,7 +207,7 @@ install -d $RPM_BUILD_ROOT%{_bindir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install contrib/gcc/*/{fbmngplay,gmngview,mngtree,mngplay,xmngview} \
+install contrib/gcc/*/{fbmngplay,gmngview,mngtree%{?with_sdl:,mngplay},xmngview} \
 	$RPM_BUILD_ROOT%{_bindir}
 
 %clean
@@ -241,6 +247,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/xmngview
 
+%if %{with sdl}
 %files progs-sdl
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mngplay
+%endif
