@@ -1,17 +1,18 @@
 Summary:	A library of functions for manipulating MNG format files
 Name:		libmng
-Version:	1.0.1
+Version:	1.0.2
 Release:	1
 License:	BSD-like
 Group:		Libraries
 Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source0:	ftp://download.sourceforge.net/pub/sourceforge/libmng/%{name}-%{version}.tar.gz
+Source0:	http://prdownloads.sourceforge.net/libmng/%{name}-%{version}.tar.gz
 Patch0:		%{name}-automake.patch
 URL:		http://www.libmng.com/
 BuildRequires:	automake
 BuildRequires:	autoconf
+BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -56,11 +57,16 @@ Static MNG libraries.
 %patch -p1
 
 %build
+rm -f acinclude.m4 missing
 libtoolize --copy --force
 aclocal
 autoconf
 automake -a -c
-%configure
+%configure \
+	--enable-shared \
+	--enable-static \
+	--with-zlib \
+	--with-jpeg
 %{__make}
 
 %install
