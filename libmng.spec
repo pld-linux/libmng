@@ -1,7 +1,7 @@
 Summary:	A library of functions for manipulating MNG format files
 Name:		libmng
-Version:	0.9.2
-Release:	2
+Version:	0.9.3
+Release:	1
 License:	AS IS
 Group:		Libraries
 Group(de):	Libraries
@@ -49,7 +49,7 @@ Requires:	%{name}-devel = %{version}
 Static MNG libraries.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 %patch -p1
 
 %build
