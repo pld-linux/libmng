@@ -23,7 +23,7 @@ BuildRequires:	libtool
 BuildRequires:	zlib-devel
 # for contribs
 %{?with_sdl:BuildRequires:	SDL-devel}
-BuildRequires:	gtk+2-devel >= 2.0.0
+BuildRequires:	gtk+2-devel >= 1:2.0.0
 BuildRequires:	motif-devel >= 2.0
 Obsoletes:	libmng1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
