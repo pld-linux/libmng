@@ -1,14 +1,18 @@
-Summary: A library of functions for manipulating MNG format files.
-Name: libmng
-Version: 0.9.2
-Release: 2
-Copyright: AS IS
-Group: System Environment/Libraries
-Source0: libmng-%{PACKAGE_VERSION}.tar.gz
-Patch: libmng-%{PACKAGE_VERSION}-rhconf.patch
-URL: http://www.libmng.com/
-BuildRoot: /var/tmp/libmng-root
-BuildPrereq: libjpeg-devel, zlib-devel, lcms-devel
+Summary:	A library of functions for manipulating MNG format files
+Name:		libmng
+Version:	0.9.2
+Release:	1
+License:	AS IS
+Group:		Libraries
+Group(pl):	Biblioteki
+Group(fr):	Librairies
+Source0:	ftp://download.sourceforge.net/pub/sourceforge/libmng/%{name}-%{version}.tar.gz
+Patch0:		libmng-automake.patch
+URL:		http://www.libmng.com/
+BuildPrereq:	automake
+BuildPrereq:	autoconf
+BuildPrereq:	zlib-devel
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 libmng - library for reading, writing, displaying and examing
@@ -16,59 +20,72 @@ Multiple-Image Network Graphics. MNG is the animation extension to the
 popular PNG image-format.
 
 %package devel
-Summary: Development tools for programs to manipulate MNG format files.
-Group: Development/Libraries
-Requires: libmng = %{PACKAGE_VERSION}
+Summary:	Development tools for programs to manipulate MNG format files
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Group(fr):	Development/Librairies
+Requires:	%{name} = %{version}
+
 %description devel
 The libmng-devel package contains the header files and static
 libraries necessary for developing programs using the MNG
 (Multiple-Image Network Graphics) library.
 
 If you want to develop programs which will manipulate MNG image format
-files, you should install libmng-devel.  You'll also need to install
+files, you should install libmng-devel. You'll also need to install
 the libmng package.
 
-%changelog
-* Sat Aug  5 2000 Gerard Juyn <gerard@libmng.com>
-- updated to 0.9.2
+%package static
+Summary:	Static MNG libraries
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Group(fr):	Development/Librairies
+Requires:	%{name}-devel = %{version}
 
-* Wed Jul 26 2000 Gerard Juyn <gerard@libmng.com>
-- updated to 0.9.1
-
-* Sat Jul  1 2000 MATSUURA Takanori <t-matsuu@protein.osaka-u.ac.jp>
-- updated to 0.9.0
-
-* Sat Jun 24 2000 MATSUURA Takanori <t-matsuu@protein.osaka-u.ac.jp>
-- 1st release for RPM
+%description static
+Static MNG libraries.
 
 %prep
-%setup -n libmng
-ln -s makefiles/makefile.linux Makefile
-%patch -p1 -b .rhconf
+%setup -q
+%patch -p1
 
 %build
-make RPM_OPT_FLAGS="$RPM_OPT_FLAGS"
+aclocal
+automake
+autoconf
+LDFLAGS="-s"; export LDFLAGS
+%configure
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/usr/{lib,include}
-make install prefix=$RPM_BUILD_ROOT/usr
-strip -R .comments --strip-unneeded $RPM_BUILD_ROOT/usr/lib/libmng.so.0.%{PACKAGE_VERSION}
+
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
+
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man*/* \
+	CHANGES README* doc/{doc.readme,libmng.txt}
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
-
 %files
-%defattr(-,root,root)
-%doc changes.readme license.readme readme doc/*
-/usr/lib/libmng.so.*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%{_mandir}/man5/*
 
 %files devel
-%defattr(-,root,root)
-/usr/include/*
-/usr/lib/libmng.a
-/usr/lib/libmng.so
+%defattr(644,root,root,755)
+%doc *.gz doc/*.gz
+%{_includedir}/*
+%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.la
+%{_mandir}/man3/*
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/libmng.a
