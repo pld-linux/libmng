@@ -5,13 +5,14 @@ Release:	1
 License:	BSD-like
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	http://prdownloads.sourceforge.net/libmng/%{name}-%{version}.tar.gz
 Patch0:		%{name}-automake.patch
 URL:		http://www.libmng.com/
 BuildRequires:	automake
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
