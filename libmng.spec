@@ -2,7 +2,7 @@ Summary:	A library of functions for manipulating MNG format files
 Summary(pl):	Biblioteka do obróbki plików w formacie MNG
 Name:		libmng
 Version:	1.0.3
-Release:	2
+Release:	3
 License:	BSD-like
 Group:		Libraries
 Group(de):	Libraries
@@ -21,6 +21,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	libmng0
 
 %description
 libmng - library for reading, writing, displaying and examing
@@ -46,6 +47,7 @@ Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name} = %{version}
 Requires:	libjpeg-devel
 Requires:	zlib-devel
+Obsoletes:	libmng0-devel
 
 %description devel
 The libmng-devel package contains the header files necessary for
@@ -81,7 +83,7 @@ Biblioteki statyczne MNG.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 rm -f acinclude.m4 missing
