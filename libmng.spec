@@ -1,6 +1,6 @@
 Summary:	A library of functions for manipulating MNG format files
 Name:		libmng
-Version:	0.9.4
+Version:	1.0.0
 Release:	1
 License:	BSD-like
 Group:		Libraries
@@ -49,13 +49,13 @@ Requires:	%{name}-devel = %{version}
 Static MNG libraries.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 %patch -p1
 
 %build
 aclocal
-automake -a -c
 autoconf
+automake -a -c
 %configure
 %{__make}
 
