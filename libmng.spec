@@ -25,6 +25,7 @@ BuildRequires:	zlib-devel
 %{?with_sdl:BuildRequires:	SDL-devel}
 BuildRequires:	gtk+2-devel >= 1:2.0.0
 BuildRequires:	motif-devel >= 2.0
+BuildRequires:	pkgconfig
 Obsoletes:	libmng1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
