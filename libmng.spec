@@ -4,7 +4,7 @@ Summary(uk):	Б╕бл╕отека функц╕й для роботи з файлами у формат╕ MNG
 Summary(ru):	Библиотека функций для работы с файлами в формате MNG
 Name:		libmng
 Version:	1.0.7
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libmng/%{name}-%{version}.tar.gz
