@@ -1,8 +1,10 @@
 Summary:	A library of functions for manipulating MNG format files
 Summary(pl):	Biblioteka do obrСbki plikСw w formacie MNG
+Summary(uk):	Б╕бл╕отека функц╕й для роботи з файлами у формат╕ MNG
+Summary(ru):	Библиотека функций для работы с файлами в формате MNG
 Name:		libmng
 Version:	1.0.3
-Release:	3
+Release:	4
 License:	BSD-like
 Group:		Libraries
 Source0:	http://prdownloads.sourceforge.net/libmng/%{name}-%{version}.tar.gz
@@ -26,9 +28,21 @@ libmng - biblioteka do czytania, zapisywania, wy╤wietlania i
 pobierania informacji z plikСw MNG (Multiple-Image Network Graphics).
 MNG to rozszerzenie o animacje popularnego formatu obrazkСw PNG.
 
+%description -l ru
+libmng - библиотека для чтения, записи, отображения и изучения
+Multiple-Image Network Graphics. MNG - это анимационное расширение для
+популярного формата изображений PNG.
+
+%description -l uk
+libmng - б╕бл╕отека для читання, запису, в╕дображення та вивчення
+Multiple-Image Network Graphics. MNG - це ан╕мац╕йне розширення для
+популярного формату зображень PNG.
+
 %package devel
 Summary:	Development tools for programs to manipulate MNG format files
 Summary(pl):	Pakiet do tworzenia programСw obrabiaj╠cych pliki MNG
+Summary(ru):	Средства разработки для программ, работающих с файлами в формате MNG
+Summary(uk):	Засоби розробки для роботи з програмами, що працюють з файлами у формат╕ MNG
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	libjpeg-devel
@@ -48,9 +62,21 @@ the libmng package.
 Ten pakiet zawiera pliki nagЁСwkowe potrzebne do tworzenia programСw
 u©ywaj╠cych biblioteki libmng do obrСbki plikСw MNG.
 
+%description devel -l ru
+Пакет libmng-devel содержит хедеры и библиотеки разработчика,
+необходимые для разработки программ, использующих библиотеку MNG
+(Multiple-Image Network Graphics).
+
+%description devel -l uk
+Пакет libmng-devel м╕стить хедери та б╕бл╕отеки програм╕ста, необх╕дн╕
+для розробки програм, що використовують б╕бл╕отеку MNG (Multiple-Image
+Network Graphics).
+
 %package static
 Summary:	Static MNG libraries
 Summary(pl):	Biblioteki statyczne MNG
+Summary(ru):	Статическая библиотека для работы с файлами в формате MNG
+Summary(uk):	Статична б╕бл╕отека для роботи з файлами у формат╕ MNG
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
@@ -59,6 +85,12 @@ Static MNG libraries.
 
 %description static -l pl
 Biblioteki statyczne MNG.
+
+%description static -l ru
+Статическая библиотека для работы с файлами в формате MNG.
+
+%description static -l uk
+Статична б╕бл╕отека для роботи з файлами у формат╕ MNG.
 
 %prep
 %setup -q
