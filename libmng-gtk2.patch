@@ -1,0 +1,22 @@
+--- libmng-1.0.7/contrib/gcc/gtk-mng-view/gtk-mng-view.c.orig	2004-03-21 19:18:53.000000000 +0100
++++ libmng-1.0.7/contrib/gcc/gtk-mng-view/gtk-mng-view.c	2004-03-27 21:03:23.054574096 +0100
+@@ -243,8 +243,8 @@
+   if (mng_view->MNG_handle)
+     mng_cleanup (&mng_view->MNG_handle);
+ 
+-  if (GTK_OBJECT_CLASS (parent_class)->finalize)
+-    (* GTK_OBJECT_CLASS (parent_class)->finalize) (obj);
++  if (G_OBJECT_CLASS(parent_class)->finalize)
++    (* G_OBJECT_CLASS(parent_class)->finalize) (obj);
+ }
+ 
+ static void
+@@ -395,7 +395,7 @@
+   parent_class = gtk_type_class (GTK_TYPE_WIDGET);
+ 
+   object_class = (GtkObjectClass *) klass;
+-  object_class->finalize = gtk_mng_view_finalize;
++  G_OBJECT_CLASS(object_class)->finalize = gtk_mng_view_finalize;
+ 
+   widget_class = (GtkWidgetClass *) klass;
+   widget_class->size_request = gtk_mng_view_size_request;
