@@ -1,6 +1,6 @@
 Summary:	A library of functions for manipulating MNG format files
 Name:		libmng
-Version:	1.0.2
+Version:	1.0.3
 Release:	1
 License:	BSD-like
 Group:		Libraries
