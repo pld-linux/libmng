@@ -7,7 +7,7 @@ Version:	1.0.5
 Release:	1
 License:	BSD-like
 Group:		Libraries
-Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/libmng/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/libmng/%{name}-%{version}.tar.gz
 Patch0:		%{name}-automake.patch
 URL:		http://www.libmng.com/
 BuildRequires:	autoconf >= 2.50
