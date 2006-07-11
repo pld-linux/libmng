@@ -1,5 +1,7 @@
 #
 # Conditional build:
+%bcond_without	gtk	# don't build GTK+-based contribs
+%bcond_without	motif	# don't build Motif-based contribs
 %bcond_without	sdl	# don't build SDL-based contribs
 #
 Summary:	A library of functions for manipulating MNG format files
@@ -24,8 +26,8 @@ BuildRequires:	libtool
 BuildRequires:	zlib-devel
 # for contribs
 %{?with_sdl:BuildRequires:	SDL-devel}
-BuildRequires:	gtk+2-devel >= 1:2.0.0
-BuildRequires:	motif-devel >= 2.0
+%{?with_gtk:BuildRequires:	gtk+2-devel >= 1:2.0.0}
+%{?with_motif:BuildRequires:	motif-devel >= 2.0}
 BuildRequires:	pkgconfig
 Obsoletes:	libmng1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -180,10 +182,12 @@ cp doc/man/makefiles/Makefile.am doc/man
 	CFLAGS="%{rpmcflags} -Wall -D_REENTRANT -I../../.." \
 	LDFLAGS="%{rpmldflags} -L../../../.libs"
 
+%if %{with gtk}
 %{__make} -C contrib/gcc/gtk-mng-view gmngview \
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags} -Wall -I../../.. `pkg-config --cflags gdk-pixbuf-2.0 gtk+-2.0`" \
 	LIBS="%{rpmldflags} -L../../../.libs -lmng `pkg-config --libs gdk-pixbuf-2.0 gtk+-2.0`"
+%endif
 
 %{__make} -C contrib/gcc/mngtree -f makefile.linux \
 	CC="%{__cc}" \
@@ -196,10 +200,12 @@ cp doc/man/makefiles/Makefile.am doc/man
 	 -L.libs -lmng `sdl-config --libs`
 %endif
 
+%if %{with motif}
 %{__make} -C contrib/gcc/xmngview compile \
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags} -Wall -I../../.. -I/usr/X11R6/include" \
 	LIBS="-L../../../.libs -lmng -L/usr/X11R6/%{_lib} -lXm -lXt -lX11"
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -208,7 +214,7 @@ install -d $RPM_BUILD_ROOT%{_bindir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install contrib/gcc/*/{fbmngplay,gmngview,mngtree%{?with_sdl:,mngplay},xmngview} \
+install contrib/gcc/*/{fbmngplay%{?with_gtk:,gmngview},mngtree%{?with_sdl:,mngplay}%{?with_motif:,xmngview}} \
 	$RPM_BUILD_ROOT%{_bindir}
 
 %clean
@@ -240,13 +246,17 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/fbmngplay
 %attr(755,root,root) %{_bindir}/mngtree
 
+%if %{with gtk}
 %files progs-gtk
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/gmngview
+%endif
 
+%if %{with motif}
 %files progs-motif
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/xmngview
+%endif
 
 %if %{with sdl}
 %files progs-sdl
