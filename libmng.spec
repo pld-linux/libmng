@@ -28,6 +28,7 @@ BuildRequires:	zlib-devel
 %{?with_sdl:BuildRequires:	SDL-devel}
 %{?with_gtk:BuildRequires:	gtk+2-devel >= 1:2.0.0}
 %{?with_motif:BuildRequires:	motif-devel >= 2.0}
+%{?with_motif:BuildRequires:	xorg-lib-libXt-devel}
 BuildRequires:	pkgconfig
 Obsoletes:	libmng1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -203,8 +204,8 @@ cp doc/man/makefiles/Makefile.am doc/man
 %if %{with motif}
 %{__make} -C contrib/gcc/xmngview compile \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags} -Wall -I../../.. -I/usr/X11R6/include" \
-	LIBS="-L../../../.libs -lmng -L/usr/X11R6/%{_lib} -lXm -lXt -lX11"
+	CFLAGS="%{rpmcflags} -Wall -I../../.." \
+	LIBS="-L../../../.libs -lmng -lXm -lXt -lX11"
 %endif
 
 %install
