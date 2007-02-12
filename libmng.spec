@@ -5,9 +5,9 @@
 %bcond_without	sdl	# don't build SDL-based contribs
 #
 Summary:	A library of functions for manipulating MNG format files
-Summary(pl):	Biblioteka do obrСbki plikСw w formacie MNG
-Summary(uk):	Б╕бл╕отека функц╕й для роботи з файлами у формат╕ MNG
-Summary(ru):	Библиотека функций для работы с файлами в формате MNG
+Summary(pl.UTF-8):   Biblioteka do obrцЁbki plikцЁw w formacie MNG
+Summary(uk.UTF-8):   п▒я√п╠п╩я√п╬я┌п╣п╨п╟ я└я┐п╫п╨я├я√п╧ п╢п╩я▐ я─п╬п╠п╬я┌п╦ п╥ я└п╟п╧п╩п╟п╪п╦ я┐ я└п╬я─п╪п╟я┌я√ MNG
+Summary(ru.UTF-8):   п▒п╦п╠п╩п╦п╬я┌п╣п╨п╟ я└я┐п╫п╨я├п╦п╧ п╢п╩я▐ я─п╟п╠п╬я┌я▀ я│ я└п╟п╧п╩п╟п╪п╦ п╡ я└п╬я─п╪п╟я┌п╣ MNG
 Name:		libmng
 Version:	1.0.9
 Release:	4
@@ -38,26 +38,26 @@ libmng - library for reading, writing, displaying and examing
 Multiple-Image Network Graphics. MNG is the animation extension to the
 popular PNG image-format.
 
-%description -l pl
-libmng - biblioteka do czytania, zapisywania, wy╤wietlania i
-pobierania informacji z plikСw MNG (Multiple-Image Network Graphics).
-MNG to rozszerzenie o animacje popularnego formatu obrazkСw PNG.
+%description -l pl.UTF-8
+libmng - biblioteka do czytania, zapisywania, wyе⌡wietlania i
+pobierania informacji z plikцЁw MNG (Multiple-Image Network Graphics).
+MNG to rozszerzenie o animacje popularnego formatu obrazkцЁw PNG.
 
-%description -l ru
-libmng - библиотека для чтения, записи, отображения и изучения
-Multiple-Image Network Graphics. MNG - это анимационное расширение для
-популярного формата изображений PNG.
+%description -l ru.UTF-8
+libmng - п╠п╦п╠п╩п╦п╬я┌п╣п╨п╟ п╢п╩я▐ я┤я┌п╣п╫п╦я▐, п╥п╟п©п╦я│п╦, п╬я┌п╬п╠я─п╟п╤п╣п╫п╦я▐ п╦ п╦п╥я┐я┤п╣п╫п╦я▐
+Multiple-Image Network Graphics. MNG - я█я┌п╬ п╟п╫п╦п╪п╟я├п╦п╬п╫п╫п╬п╣ я─п╟я│я┬п╦я─п╣п╫п╦п╣ п╢п╩я▐
+п©п╬п©я┐п╩я▐я─п╫п╬пЁп╬ я└п╬я─п╪п╟я┌п╟ п╦п╥п╬п╠я─п╟п╤п╣п╫п╦п╧ PNG.
 
-%description -l uk
-libmng - б╕бл╕отека для читання, запису, в╕дображення та вивчення
-Multiple-Image Network Graphics. MNG - це ан╕мац╕йне розширення для
-популярного формату зображень PNG.
+%description -l uk.UTF-8
+libmng - п╠я√п╠п╩я√п╬я┌п╣п╨п╟ п╢п╩я▐ я┤п╦я┌п╟п╫п╫я▐, п╥п╟п©п╦я│я┐, п╡я√п╢п╬п╠я─п╟п╤п╣п╫п╫я▐ я┌п╟ п╡п╦п╡я┤п╣п╫п╫я▐
+Multiple-Image Network Graphics. MNG - я├п╣ п╟п╫я√п╪п╟я├я√п╧п╫п╣ я─п╬п╥я┬п╦я─п╣п╫п╫я▐ п╢п╩я▐
+п©п╬п©я┐п╩я▐я─п╫п╬пЁп╬ я└п╬я─п╪п╟я┌я┐ п╥п╬п╠я─п╟п╤п╣п╫я▄ PNG.
 
 %package devel
 Summary:	Development tools for programs to manipulate MNG format files
-Summary(pl):	Pakiet do tworzenia programСw obrabiaj╠cych pliki MNG
-Summary(ru):	Средства разработки для программ, работающих с файлами в формате MNG
-Summary(uk):	Засоби розробки для роботи з програмами, що працюють з файлами у формат╕ MNG
+Summary(pl.UTF-8):   Pakiet do tworzenia programцЁw obrabiajд┘cych pliki MNG
+Summary(ru.UTF-8):   п║я─п╣п╢я│я┌п╡п╟ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п╢п╩я▐ п©я─п╬пЁя─п╟п╪п╪, я─п╟п╠п╬я┌п╟я▌я┴п╦я┘ я│ я└п╟п╧п╩п╟п╪п╦ п╡ я└п╬я─п╪п╟я┌п╣ MNG
+Summary(uk.UTF-8):   п≈п╟я│п╬п╠п╦ я─п╬п╥я─п╬п╠п╨п╦ п╢п╩я▐ я─п╬п╠п╬я┌п╦ п╥ п©я─п╬пЁя─п╟п╪п╟п╪п╦, я┴п╬ п©я─п╟я├я▌я▌я┌я▄ п╥ я└п╟п╧п╩п╟п╪п╦ я┐ я└п╬я─п╪п╟я┌я√ MNG
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	lcms-devel
@@ -74,43 +74,43 @@ If you want to develop programs which will manipulate MNG image format
 files, you should install libmng-devel. You'll also need to install
 the libmng package.
 
-%description devel -l pl
-Ten pakiet zawiera pliki nagЁСwkowe potrzebne do tworzenia programСw
-u©ywaj╠cych biblioteki libmng do obrСbki plikСw MNG.
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nagе┌цЁwkowe potrzebne do tworzenia programцЁw
+uе╪ywajд┘cych biblioteki libmng do obrцЁbki plikцЁw MNG.
 
-%description devel -l ru
-Пакет libmng-devel содержит хедеры и библиотеки разработчика,
-необходимые для разработки программ, использующих библиотеку MNG
+%description devel -l ru.UTF-8
+п÷п╟п╨п╣я┌ libmng-devel я│п╬п╢п╣я─п╤п╦я┌ я┘п╣п╢п╣я─я▀ п╦ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ я─п╟п╥я─п╟п╠п╬я┌я┤п╦п╨п╟,
+п╫п╣п╬п╠я┘п╬п╢п╦п╪я▀п╣ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п©я─п╬пЁя─п╟п╪п╪, п╦я│п©п╬п╩я▄п╥я┐я▌я┴п╦я┘ п╠п╦п╠п╩п╦п╬я┌п╣п╨я┐ MNG
 (Multiple-Image Network Graphics).
 
-%description devel -l uk
-Пакет libmng-devel м╕стить хедери та б╕бл╕отеки програм╕ста, необх╕дн╕
-для розробки програм, що використовують б╕бл╕отеку MNG (Multiple-Image
+%description devel -l uk.UTF-8
+п÷п╟п╨п╣я┌ libmng-devel п╪я√я│я┌п╦я┌я▄ я┘п╣п╢п╣я─п╦ я┌п╟ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ п©я─п╬пЁя─п╟п╪я√я│я┌п╟, п╫п╣п╬п╠я┘я√п╢п╫я√
+п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п©я─п╬пЁя─п╟п╪, я┴п╬ п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐я▌я┌я▄ п╠я√п╠п╩я√п╬я┌п╣п╨я┐ MNG (Multiple-Image
 Network Graphics).
 
 %package static
 Summary:	Static MNG libraries
-Summary(pl):	Biblioteki statyczne MNG
-Summary(ru):	Статическая библиотека для работы с файлами в формате MNG
-Summary(uk):	Статична б╕бл╕отека для роботи з файлами у формат╕ MNG
+Summary(pl.UTF-8):   Biblioteki statyczne MNG
+Summary(ru.UTF-8):   п║я┌п╟я┌п╦я┤п╣я│п╨п╟я▐ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╟ п╢п╩я▐ я─п╟п╠п╬я┌я▀ я│ я└п╟п╧п╩п╟п╪п╦ п╡ я└п╬я─п╪п╟я┌п╣ MNG
+Summary(uk.UTF-8):   п║я┌п╟я┌п╦я┤п╫п╟ п╠я√п╠п╩я√п╬я┌п╣п╨п╟ п╢п╩я▐ я─п╬п╠п╬я┌п╦ п╥ я└п╟п╧п╩п╟п╪п╦ я┐ я└п╬я─п╪п╟я┌я√ MNG
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static MNG libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne MNG.
 
-%description static -l ru
-Статическая библиотека для работы с файлами в формате MNG.
+%description static -l ru.UTF-8
+п║я┌п╟я┌п╦я┤п╣я│п╨п╟я▐ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╟ п╢п╩я▐ я─п╟п╠п╬я┌я▀ я│ я└п╟п╧п╩п╟п╪п╦ п╡ я└п╬я─п╪п╟я┌п╣ MNG.
 
-%description static -l uk
-Статична б╕бл╕отека для роботи з файлами у формат╕ MNG.
+%description static -l uk.UTF-8
+п║я┌п╟я┌п╦я┤п╫п╟ п╠я√п╠п╩я√п╬я┌п╣п╨п╟ п╢п╩я▐ я─п╬п╠п╬я┌п╦ п╥ я└п╟п╧п╩п╟п╪п╦ я┐ я└п╬я─п╪п╟я┌я√ MNG.
 
 %package progs
 Summary:	libmng utilities (fbmngplay, mngtree)
-Summary(pl):	NarzЙdzia do libmng (fbmngplay, mngtree)
+Summary(pl.UTF-8):   Narzд≥dzia do libmng (fbmngplay, mngtree)
 Group:		Applications/Graphics
 Requires:	%{name} = %{version}-%{release}
 
@@ -118,45 +118,45 @@ Requires:	%{name} = %{version}-%{release}
 libmng utilities that don't depend on additional libraries (fbmngplay,
 mngtree).
 
-%description progs -l pl
-NarzЙdzia do libmng nie wymagaj╠ce dodatkowych bibliotek (fbmngplay,
+%description progs -l pl.UTF-8
+Narzд≥dzia do libmng nie wymagajд┘ce dodatkowych bibliotek (fbmngplay,
 mngtree).
 
 %package progs-gtk
 Summary:	gmngview - GTK+-based MNG viewer
-Summary(pl):	gmngview - przegl╠darka plikСw MNG oparta na GTK+
+Summary(pl.UTF-8):   gmngview - przeglд┘darka plikцЁw MNG oparta na GTK+
 Group:		X11/Applications/Graphics
 Requires:	%{name} = %{version}-%{release}
 
 %description progs-gtk
 gmngview - GTK+-based MNG viewer.
 
-%description progs-gtk -l pl
-gmngview - przegl╠darka plikСw MNG oparta na GTK+.
+%description progs-gtk -l pl.UTF-8
+gmngview - przeglд┘darka plikцЁw MNG oparta na GTK+.
 
 %package progs-motif
 Summary:	xmngplay - X11/Motif-based MNG viewer
-Summary(pl):	xmngplay - przegl╠darka plikСw MNG oparta na bibliotekach X11/Motif
+Summary(pl.UTF-8):   xmngplay - przeglд┘darka plikцЁw MNG oparta na bibliotekach X11/Motif
 Group:		X11/Applications/Graphics
 Requires:	%{name} = %{version}-%{release}
 
 %description progs-motif
 xmngplay - X11/Motif-based MNG viewer.
 
-%description progs-motif -l pl
-xmngplay - przegl╠darka plikСw MNG oparta na bibliotekach X11/Motif.
+%description progs-motif -l pl.UTF-8
+xmngplay - przeglд┘darka plikцЁw MNG oparta na bibliotekach X11/Motif.
 
 %package progs-sdl
 Summary:	mngplay - SDL-based MNG viewer
-Summary(pl):	mngplay - przegl╠darka plikСw MNG oparta na SDL
+Summary(pl.UTF-8):   mngplay - przeglд┘darka plikцЁw MNG oparta na SDL
 Group:		Applications/Graphics
 Requires:	%{name} = %{version}-%{release}
 
 %description progs-sdl
 mngplay - SDL-based MNG viewer.
 
-%description progs-sdl -l pl
-mngplay - przegl╠darka plikСw MNG oparta na SDL.
+%description progs-sdl -l pl.UTF-8
+mngplay - przeglд┘darka plikцЁw MNG oparta na SDL.
 
 %prep
 %setup -q
