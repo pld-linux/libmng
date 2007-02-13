@@ -5,9 +5,9 @@
 %bcond_without	sdl	# don't build SDL-based contribs
 #
 Summary:	A library of functions for manipulating MNG format files
-Summary(pl.UTF-8):   Biblioteka do obróbki plików w formacie MNG
-Summary(uk.UTF-8):   Бібліотека функцій для роботи з файлами у форматі MNG
-Summary(ru.UTF-8):   Библиотека функций для работы с файлами в формате MNG
+Summary(pl.UTF-8):	Biblioteka do obróbki plików w formacie MNG
+Summary(uk.UTF-8):	Бібліотека функцій для роботи з файлами у форматі MNG
+Summary(ru.UTF-8):	Библиотека функций для работы с файлами в формате MNG
 Name:		libmng
 Version:	1.0.9
 Release:	4
@@ -55,9 +55,9 @@ Multiple-Image Network Graphics. MNG - це анімаційне розшире�
 
 %package devel
 Summary:	Development tools for programs to manipulate MNG format files
-Summary(pl.UTF-8):   Pakiet do tworzenia programów obrabiających pliki MNG
-Summary(ru.UTF-8):   Средства разработки для программ, работающих с файлами в формате MNG
-Summary(uk.UTF-8):   Засоби розробки для роботи з програмами, що працюють з файлами у форматі MNG
+Summary(pl.UTF-8):	Pakiet do tworzenia programów obrabiających pliki MNG
+Summary(ru.UTF-8):	Средства разработки для программ, работающих с файлами в формате MNG
+Summary(uk.UTF-8):	Засоби розробки для роботи з програмами, що працюють з файлами у форматі MNG
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	lcms-devel
@@ -90,9 +90,9 @@ Network Graphics).
 
 %package static
 Summary:	Static MNG libraries
-Summary(pl.UTF-8):   Biblioteki statyczne MNG
-Summary(ru.UTF-8):   Статическая библиотека для работы с файлами в формате MNG
-Summary(uk.UTF-8):   Статична бібліотека для роботи з файлами у форматі MNG
+Summary(pl.UTF-8):	Biblioteki statyczne MNG
+Summary(ru.UTF-8):	Статическая библиотека для работы с файлами в формате MNG
+Summary(uk.UTF-8):	Статична бібліотека для роботи з файлами у форматі MNG
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -110,7 +110,7 @@ Biblioteki statyczne MNG.
 
 %package progs
 Summary:	libmng utilities (fbmngplay, mngtree)
-Summary(pl.UTF-8):   Narzędzia do libmng (fbmngplay, mngtree)
+Summary(pl.UTF-8):	Narzędzia do libmng (fbmngplay, mngtree)
 Group:		Applications/Graphics
 Requires:	%{name} = %{version}-%{release}
 
@@ -124,7 +124,7 @@ mngtree).
 
 %package progs-gtk
 Summary:	gmngview - GTK+-based MNG viewer
-Summary(pl.UTF-8):   gmngview - przeglądarka plików MNG oparta na GTK+
+Summary(pl.UTF-8):	gmngview - przeglądarka plików MNG oparta na GTK+
 Group:		X11/Applications/Graphics
 Requires:	%{name} = %{version}-%{release}
 
@@ -136,7 +136,7 @@ gmngview - przeglądarka plików MNG oparta na GTK+.
 
 %package progs-motif
 Summary:	xmngplay - X11/Motif-based MNG viewer
-Summary(pl.UTF-8):   xmngplay - przeglądarka plików MNG oparta na bibliotekach X11/Motif
+Summary(pl.UTF-8):	xmngplay - przeglądarka plików MNG oparta na bibliotekach X11/Motif
 Group:		X11/Applications/Graphics
 Requires:	%{name} = %{version}-%{release}
 
@@ -148,7 +148,7 @@ xmngplay - przeglądarka plików MNG oparta na bibliotekach X11/Motif.
 
 %package progs-sdl
 Summary:	mngplay - SDL-based MNG viewer
-Summary(pl.UTF-8):   mngplay - przeglądarka plików MNG oparta na SDL
+Summary(pl.UTF-8):	mngplay - przeglądarka plików MNG oparta na SDL
 Group:		Applications/Graphics
 Requires:	%{name} = %{version}-%{release}
 
