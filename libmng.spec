@@ -1,8 +1,9 @@
 #
 # Conditional build:
-%bcond_without	gtk	# don't build GTK+-based contribs
-%bcond_without	motif	# don't build Motif-based contribs
-%bcond_without	sdl	# don't build SDL-based contribs
+%bcond_without	gtk		# don't build GTK+-based contribs
+%bcond_without	motif		# don't build Motif-based contribs
+%bcond_without	sdl		# don't build SDL-based contribs
+%bcond_without	static_libs	# don't build static libraries
 #
 Summary:	A library of functions for manipulating MNG format files
 Summary(pl.UTF-8):	Biblioteka do obróbki plików w formacie MNG
@@ -175,7 +176,8 @@ cp doc/man/makefiles/Makefile.am doc/man
 	--enable-shared \
 	--enable-static \
 	--with-zlib \
-	--with-jpeg
+	--with-jpeg \
+	%{!?with_static_libs:--disable-static}
 %{__make}
 
 %{__make} -C contrib/gcc/fbmngplay fbmngplay \
@@ -238,9 +240,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*
 %{_mandir}/man3/*
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libmng.a
+%endif
 
 %files progs
 %defattr(644,root,root,755)
