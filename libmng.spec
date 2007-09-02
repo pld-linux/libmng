@@ -173,8 +173,6 @@ cp doc/man/makefiles/Makefile.am doc/man
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-shared \
-	--enable-static \
 	--with-zlib \
 	--with-jpeg \
 	%{!?with_static_libs:--disable-static}
