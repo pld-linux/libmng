@@ -14,7 +14,7 @@ Version:	1.0.10
 Release:	4
 License:	BSD-like
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/libmng/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/libmng/%{name}-%{version}.tar.gz
 # Source0-md5:	a464ae7d679781beebdf7440d144b7bd
 Patch0:		%{name}-automake.patch
 Patch1:		%{name}-gcc4.patch
@@ -227,16 +227,18 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGES LICENSE README 
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
-%{_mandir}/man5/*
+%attr(755,root,root) %{_libdir}/libmng.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmng.so.1
+%{_mandir}/man5/jng.5*
+%{_mandir}/man5/mng.5*
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/{doc.readme,libmng.txt,Plan*.png}
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*
-%{_mandir}/man3/*
+%attr(755,root,root) %{_libdir}/libmng.so
+%{_libdir}/libmng.la
+%{_includedir}/libmng*.h
+%{_mandir}/man3/libmng.3*
 
 %if %{with static_libs}
 %files static
