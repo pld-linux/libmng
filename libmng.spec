@@ -11,7 +11,7 @@ Summary(uk.UTF-8):	Бібліотека функцій для роботи з ф
 Summary(ru.UTF-8):	Библиотека функций для работы с файлами в формате MNG
 Name:		libmng
 Version:	1.0.10
-Release:	5
+Release:	6
 License:	BSD-like
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libmng/%{name}-%{version}.tar.gz
@@ -29,8 +29,8 @@ BuildRequires:	zlib-devel
 %{?with_sdl:BuildRequires:	SDL-devel}
 %{?with_gtk:BuildRequires:	gtk+2-devel >= 1:2.0.0}
 %{?with_motif:BuildRequires:	motif-devel >= 2.0}
-%{?with_motif:BuildRequires:	xorg-lib-libXt-devel}
 BuildRequires:	pkgconfig
+%{?with_motif:BuildRequires:	xorg-lib-libXt-devel}
 Obsoletes:	libmng1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -187,7 +187,7 @@ cp doc/man/makefiles/Makefile.am doc/man
 %{__make} -C contrib/gcc/gtk-mng-view gmngview \
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags} -Wall -I../../.. `pkg-config --cflags gdk-pixbuf-2.0 gtk+-2.0`" \
-	LIBS="%{rpmldflags} -L../../../.libs -lmng `pkg-config --libs gdk-pixbuf-2.0 gtk+-2.0`"
+	LIBS="%{rpmldflags} -L../../../.libs -lmng -lz `pkg-config --libs gdk-pixbuf-2.0 gtk+-2.0`"
 %endif
 
 %{__make} -C contrib/gcc/mngtree -f makefile.linux \
@@ -198,7 +198,7 @@ cp doc/man/makefiles/Makefile.am doc/man
 %if %{with sdl}
 %{__cc} -o contrib/gcc/sdl-mngplay/mngplay contrib/gcc/sdl-mngplay/mngplay.c \
 	%{rpmldflags} %{rpmcflags} -I. \
-	 -L.libs -lmng `sdl-config --libs`
+	 -L.libs -lmng `sdl-config --libs` -lz
 %endif
 
 %if %{with motif}
@@ -226,7 +226,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES LICENSE README 
+%doc CHANGES LICENSE README
 %attr(755,root,root) %{_libdir}/libmng.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libmng.so.1
 %{_mandir}/man5/jng.5*
