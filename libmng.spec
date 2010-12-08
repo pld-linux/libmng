@@ -11,7 +11,7 @@ Summary(uk.UTF-8):	Бібліотека функцій для роботи з ф
 Summary(ru.UTF-8):	Библиотека функций для работы с файлами в формате MNG
 Name:		libmng
 Version:	1.0.10
-Release:	4
+Release:	5
 License:	BSD-like
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libmng/%{name}-%{version}.tar.gz
