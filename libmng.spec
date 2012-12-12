@@ -11,7 +11,7 @@ Summary(uk.UTF-8):	Бібліотека функцій для роботи з ф
 Summary(ru.UTF-8):	Библиотека функций для работы с файлами в формате MNG
 Name:		libmng
 Version:	1.0.10
-Release:	6
+Release:	7
 License:	BSD-like
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libmng/%{name}-%{version}.tar.gz
@@ -166,6 +166,7 @@ mngplay - przeglądarka plików MNG oparta na SDL.
 
 %build
 cp makefiles/{Makefile.am,configure.in} .
+sed -i '/AM_C_PROTOTYPES/d' configure.in
 cp doc/makefiles/Makefile.am doc
 cp doc/man/makefiles/Makefile.am doc/man
 %{__libtoolize}
@@ -205,7 +206,7 @@ cp doc/man/makefiles/Makefile.am doc/man
 %{__make} -C contrib/gcc/xmngview compile \
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags} -Wall -I../../.." \
-	LIBS="-L../../../.libs -lmng -lXm -lXt -lX11"
+	LIBS="-L../../../.libs -lmng -lXm -lXt -lX11 -lXext"
 %endif
 
 %install
