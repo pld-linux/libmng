@@ -12,14 +12,16 @@
  
  
  # libmng release @VERSION@
---- libmng-1.0.10/makefiles/configure.in.orig	2005-01-30 11:28:00.000000000 +0100
-+++ libmng-1.0.10/makefiles/configure.in	2007-07-16 19:43:24.774854842 +0200
-@@ -189,5 +189,5 @@
- 
+--- libmng-2.0.2/makefiles/configure.ac.orig	2014-02-04 18:36:36.404372468 +0100
++++ libmng-2.0.2/makefiles/configure.ac	2014-02-04 19:49:51.950854671 +0100
+@@ -250,6 +250,8 @@
    test $_restore -eq 1 && CPPFLAGS=$_cppflags LDFLAGS=$_ldflags
  
--AC_CONFIG_FILES([Makefile])
-+  AC_CONFIG_FILES([Makefile doc/Makefile doc/man/Makefile])
+ AC_CONFIG_FILES([Makefile 
++	doc/Makefile
++	doc/man/Makefile
+ 	libmng.pc:libmng.pc.in 
+ ])
  AC_OUTPUT
 diff -Nru libmng-1.0.5.orig/doc/makefiles/Makefile.am libmng-1.0.5/doc/makefiles/Makefile.am
 --- libmng-1.0.5.orig/doc/makefiles/Makefile.am	Thu Jan  1 01:00:00 1970

@@ -10,18 +10,19 @@ Summary(pl.UTF-8):	Biblioteka do obróbki plików w formacie MNG
 Summary(uk.UTF-8):	Бібліотека функцій для роботи з файлами у форматі MNG
 Summary(ru.UTF-8):	Библиотека функций для работы с файлами в формате MNG
 Name:		libmng
-Version:	1.0.10
-Release:	7
+Version:	2.0.2
+Release:	1
 License:	BSD-like
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/libmng/%{name}-%{version}.tar.gz
-# Source0-md5:	a464ae7d679781beebdf7440d144b7bd
+Source0:	http://downloads.sourceforge.net/libmng/%{name}-%{version}.tar.xz
+# Source0-md5:	3804bf2523af9b4e0670b5982b3bf984
 Patch0:		%{name}-automake.patch
 Patch1:		%{name}-gcc4.patch
+Patch2:		%{name}-jpeg.patch
 URL:		http://www.libmng.com/
-BuildRequires:	autoconf >= 2.50
+BuildRequires:	autoconf >= 2.65
 BuildRequires:	automake >= 1.3
-BuildRequires:	lcms-devel
+BuildRequires:	lcms2-devel >= 2
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
@@ -61,7 +62,7 @@ Summary(ru.UTF-8):	Средства разработки для программ
 Summary(uk.UTF-8):	Засоби розробки для роботи з програмами, що працюють з файлами у форматі MNG
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	lcms-devel
+Requires:	lcms2-devel >= 2
 Requires:	libjpeg-devel
 Requires:	zlib-devel
 Obsoletes:	libmng1-devel
@@ -163,10 +164,11 @@ mngplay - przeglądarka plików MNG oparta na SDL.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
-cp makefiles/{Makefile.am,configure.in} .
-sed -i '/AM_C_PROTOTYPES/d' configure.in
+cp makefiles/{Makefile.am,configure.ac} .
+#sed -i '/AM_C_PROTOTYPES/d' configure.in
 cp doc/makefiles/Makefile.am doc
 cp doc/man/makefiles/Makefile.am doc/man
 %{__libtoolize}
@@ -229,7 +231,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CHANGES LICENSE README
 %attr(755,root,root) %{_libdir}/libmng.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmng.so.1
+%attr(755,root,root) %ghost %{_libdir}/libmng.so.2
 %{_mandir}/man5/jng.5*
 %{_mandir}/man5/mng.5*
 
@@ -239,6 +241,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libmng.so
 %{_libdir}/libmng.la
 %{_includedir}/libmng*.h
+%{_pkgconfigdir}/libmng.pc
 %{_mandir}/man3/libmng.3*
 
 %if %{with static_libs}
