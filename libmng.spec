@@ -11,7 +11,7 @@ Summary(uk.UTF-8):	Бібліотека функцій для роботи з ф
 Summary(ru.UTF-8):	Библиотека функций для работы с файлами в формате MNG
 Name:		libmng
 Version:	2.0.3
-Release:	2
+Release:	3
 License:	BSD-like
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libmng/%{name}-%{version}.tar.xz
@@ -218,6 +218,9 @@ install -d $RPM_BUILD_ROOT%{_bindir}
 install contrib/gcc/*/{fbmngplay%{?with_gtk:,gmngview},mngtree%{?with_sdl:,mngplay}%{?with_motif:,xmngview}} \
 	$RPM_BUILD_ROOT%{_bindir}
 
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libmng.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -236,7 +239,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/{doc.readme,libmng.txt,Plan*.png}
 %attr(755,root,root) %{_libdir}/libmng.so
-%{_libdir}/libmng.la
 %{_includedir}/libmng*.h
 %{_pkgconfigdir}/libmng.pc
 %{_mandir}/man3/libmng.3*
